@@ -11,10 +11,11 @@ const User = require("./db/user");
 const Product=require('./db/Product')
 
 
+const port = process.env.PORT || 5000;
 
 const app = express();
 
-let port = 8000;
+
 
 app.use(express.json());
 app.use(cors());
