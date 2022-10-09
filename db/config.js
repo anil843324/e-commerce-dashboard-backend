@@ -1,13 +1,19 @@
-const mongoose=require('mongoose');
+const mongoose = require("mongoose")
+class mongo {
+    constructor() {
+        this.CreateDatabaseConnection();
+    }
+    CreateDatabaseConnection() {
+        mongoose.connect(`mongodb+srv://root:root@cluster0.sj56kau.mongodb.net/?retryWrites=true&w=majority`);
 
- 
-//  const mongoose = require('mongoose');
-// const connectionString = process.env.DATABASE_URL;
+        mongoose.connection.once("open", () => {
+            console.log("MongoDB Connected");
+        })
 
+        mongoose.connection.on("error", () => {
+            console.log("Error Occured in Connection");
+        })
+    }
+}
 
-
-// await mongoose.connect(connectionString);
-// mongodb+srv://root:<password>@cluster0.sj56kau.mongodb.net/test
-
- mongoose.connect("mongodb://localhost:27017/e-commerce")
-
+module.exports = mongo;
