@@ -11,7 +11,9 @@ const User = require("./db/user");
 const Product=require('./db/Product')
 
 
-const port = process.env.PORT || 5000;
+// const port = process.env.PORT || 5000;
+
+const port = 8000;
 
 const app = express();
 
@@ -23,6 +25,7 @@ app.post("/register", async (req, res) => {
   const user = new User(req.body);
 
   let result = await user.save();
+  
 
   result = result.toObject();
 
@@ -76,6 +79,7 @@ app.get("/products", verifyToken, async (req,res)=>{
 
    if(products.length>0){
     res.send(products)
+
    }else{
 
      res.send({result:"No products found"})
@@ -176,6 +180,7 @@ app.get("/search/:key", verifyToken, async(req,res)=>{
         } )
 
     }else{
+
 
          res.status(403).send( {result:"Please add token with header"})
 
