@@ -1,9 +1,5 @@
 const mongoose = require("mongoose")
 
-
-const mongoose=require('mongoose');
-
-
  mongoose
   .connect(
     "mongodb+srv://anildb:anildb@cluster0.apysrix.mongodb.net/e-commerce-dash?retryWrites=true&w=majority"
